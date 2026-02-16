@@ -89,14 +89,18 @@ class Doctor extends Model
             return false;
         }
 
-        // Check if within working hours (09:00-17:00, Monday-Friday)
         $carbonTime = \Carbon\Carbon::parse($dateTime);
+        $dayName    = strtolower($carbonTime->format('l'));
+        $hours      = $this->working_hours[$dayName] ?? null;
 
-        return $carbonTime->isWeekday() &&
-            $carbonTime->between(
-                \Carbon\Carbon::parse('09:00'),
-                \Carbon\Carbon::parse('17:00')->subMinutes(30)
-            );
+        if (!$hours) {
+            return false;
+        }
+
+        return $carbonTime->between(
+            \Carbon\Carbon::parse($hours[0]),
+            \Carbon\Carbon::parse($hours[1])->subMinutes(30)
+        );
     }
 
     /**
@@ -121,12 +125,6 @@ class Doctor extends Model
         return "{$this->name} ({$this->specialization})";
     }
 
-    public function appointments(): HasMany
-    {
-        return $this->hasMany(Appointment::class);
-    }
-
-    // Add these helpful methods for working with appointments
     public function getTodayAppointmentsCountAttribute(): int
     {
         return $this->appointments()
