@@ -123,7 +123,7 @@ php artisan db:seed --class=DoctorSeeder
 composer dev
 ```
 
-The app will be available at **http://localhost:8000**
+The app will be available at **http://localhost:8090**
 
 ## Pages
 
@@ -139,11 +139,7 @@ Base URL: `http://localhost:8090/api`
 
 | Method   | Endpoint                          | Description             |
 |----------|-----------------------------------|-------------------------|
-| `GET`    | `/api/doctors`                    | List all active doctors |
-| `POST`   | `/api/doctors`                    | Create a new doctor     |
-| `GET`    | `/api/doctors/{id}`               | Get a doctor by ID      |
-| `PUT`    | `/api/doctors/{id}`               | Update a doctor         |
-| `DELETE` | `/api/doctors/{id}`               | Soft-delete a doctor    |
+| `GET`    | `/api/doctors`                    | List all active doctors | |
 | `GET`    | `/api/doctors/{id}/availability`  | Get available time slots|
 
 ### Appointments
@@ -242,7 +238,7 @@ Request → FormRequest (validate) → DTO → Controller → Service → Model
 
 ## Key Features
 
-- **Doctor CRUD** with soft deletes and query scopes
+- **Doctor CRUD** with query scopes
 - **Availability slots** generated from working hours (Mon-Fri, 09:00-17:00) with 30-minute intervals
 - **Appointment booking** with pessimistic locking to prevent double-booking under concurrent requests
 - **React dashboard** with tabbed interface for managing doctors, checking availability, and booking appointments
