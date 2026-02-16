@@ -12,6 +12,11 @@ class DoctorSeeder extends Seeder
      */
     public function run(): void
     {
+        if (Doctor::count() > 0) {
+            $this->command?->info('Doctors table already seeded, skipping.');
+            return;
+        }
+
         // Create 20 random doctors
         Doctor::factory()->count(20)->create();
 
