@@ -123,7 +123,7 @@ php artisan db:seed --class=DoctorSeeder
 composer dev
 ```
 
-The app will be available at **http://localhost:8090**
+The app will be available at **http://localhost:8000**
 
 ## Pages
 
