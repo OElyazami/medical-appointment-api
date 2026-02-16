@@ -14,9 +14,6 @@ class AvailabilityController extends Controller
         private readonly AvailabilityService $availabilityService,
     ) {}
 
-    /**
-     * GET /api/doctors/{doctor}/availability?date=YYYY-MM-DD
-     */
     public function __invoke(Request $request, Doctor $doctor): JsonResponse
     {
         $request->validate([

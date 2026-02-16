@@ -13,16 +13,10 @@ class AppointmentController extends Controller
         private readonly AppointmentService $appointmentService,
     ) {}
 
-    /**
-     * POST /api/appointments
-     */
     public function store(BookAppointmentRequest $request): JsonResponse
     {
-        $appointment = $this->appointmentService->book($request->toDTO());
+        $response = $this->appointmentService->book($request->toDTO());
 
-        return response()->json([
-            'message' => 'Appointment booked successfully.',
-            'data'    => $appointment->load('doctor'),
-        ], 201);
+        return new JsonResponse($response->getArrayFormat());
     }
 }

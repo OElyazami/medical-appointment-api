@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\DataTransferObjects\DoctorFilterDTO;
-use Illuminate\Foundation\Http\FormRequest;
 
-class ListDoctorsRequest extends FormRequest
+class ListDoctorsRequest extends ApiRequest
 {
     public function authorize(): bool
     {

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\DataTransferObjects\BookAppointmentDTO;
-use Illuminate\Foundation\Http\FormRequest;
 
-class BookAppointmentRequest extends FormRequest
+class BookAppointmentRequest extends ApiRequest
 {
     public function authorize(): bool
     {
@@ -24,6 +23,7 @@ class BookAppointmentRequest extends FormRequest
             'notes'         => ['nullable', 'string', 'max:1000'],
         ];
     }
+    
 
     public function toDTO(): BookAppointmentDTO
     {
