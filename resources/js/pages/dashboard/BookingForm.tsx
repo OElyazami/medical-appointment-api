@@ -100,9 +100,11 @@ export function BookingForm({ doctors, selectedDoctor, onBooked, onError }: Prop
             onBooked(res.message);
         } catch (err) {
             if (err instanceof ApiError && err.errors) {
+                console.log(err)
                 setErrors(err.errors);
             } else if (err instanceof ApiError) {
                 onError(err.message);
+                console.log(err)
             } else {
                 onError('An unexpected error occurred');
             }
