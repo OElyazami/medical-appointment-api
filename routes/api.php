@@ -22,4 +22,4 @@ Route::prefix('doctors')->group(function () {
     Route::get('/{doctor}/availability', AvailabilityController::class);
 });
 
-Route::post('/appointments', [AppointmentController::class, 'store']);
+Route::post('/appointments', [AppointmentController::class, 'book']);
