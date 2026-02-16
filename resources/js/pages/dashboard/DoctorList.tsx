@@ -13,12 +13,6 @@ export function DoctorList({ doctors, onAdd, onEdit, onDelete, onCheckAvailabili
         <div>
             <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Doctors</h2>
-                <button
-                    onClick={onAdd}
-                    className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
-                >
-                    + Add Doctor
-                </button>
             </div>
 
             {doctors.length === 0 ? (
@@ -72,18 +66,7 @@ export function DoctorList({ doctors, onAdd, onEdit, onDelete, onCheckAvailabili
                                             >
                                                 Availability
                                             </button>
-                                            <button
-                                                onClick={() => onEdit(doctor)}
-                                                className="rounded bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            >
-                                                Edit
-                                            </button>
-                                            <button
-                                                onClick={() => onDelete(doctor)}
-                                                className="rounded bg-red-50 px-2.5 py-1 text-xs font-medium text-red-700 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400 dark:hover:bg-red-900/40"
-                                            >
-                                                Delete
-                                            </button>
+
                                         </div>
                                     </td>
                                 </tr>
