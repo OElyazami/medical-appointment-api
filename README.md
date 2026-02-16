@@ -22,7 +22,7 @@ A medical appointment scheduling system built with **Laravel 12**, **React 19**,
 
 ```bash
 # 1. Clone the repository
-git clone <repo-url>
+git clone https://github.com/OElyazami/medical-appointment-api.git
 cd medical-appointment-api
 
 # 2. Start the application
