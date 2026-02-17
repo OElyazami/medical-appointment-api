@@ -19,14 +19,22 @@ class DoctorService
             $query->bySpecialization($filters->specialization);
         }
 
+        
         if ($filters->search) {
-            $query->where('name', 'ilike', '%' . $filters->search . '%');
+            $searchTerm = trim($filters->search);
+            if (!empty($searchTerm)) {
+                $query->where(function ($q) use ($searchTerm) {
+                    $q->where('name', 'ilike', '%' . $searchTerm . '%')
+                      ->orWhere('specialization', 'ilike', '%' . $searchTerm . '%');
+                });
+            }
         }
 
+        $sortDir = strtolower($filters->sort_dir) === 'desc' ? 'desc' : 'asc';
+        
         $allowedSorts = ['name', 'specialization', 'created_at'];
-
         if (in_array($filters->sort_by, $allowedSorts)) {
-            $query->orderBy($filters->sort_by, $filters->sort_dir);
+            $query->orderBy($filters->sort_by, $sortDir);
         }
 
         return $query->paginate($filters->per_page);
